@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="main">
+    <div *ngFor="let task of tasks.sort(sortTasks)">
+      <div class="task-card" [ngClass]="task.id == this.tasks.length ? 'last-task' : ''">
+          <mat-icon *ngIf="task.status == 'done'" (click)="changeStatus(task, 'doing')">check_circle</mat-icon>
+          <mat-icon *ngIf="task.status != 'done'" (click)="changeStatus(task, 'done')">check_circle_outline</mat-icon>
+        <div class="content-wrapper">
+          <h4>{{ task.name }}</h4>
+          <p *ngIf="task.description"><span>Description:</span> {{ task.description }}</p>
+        </div>
+        <p class="status" [ngClass]="task.status == 'done' ? 'task-done' : ''">status: <b>{{ task.status }}</b></p>
+        <mat-icon class="edit_btn" [routerLink]="['/edit-task', task?.id]">edit</mat-icon>
+        <mat-icon class="remove_btn" (click)="deleteTask(task?.id)">remove_circle</mat-icon>
+      </div>
+    </div>
+  </div>
+</div>

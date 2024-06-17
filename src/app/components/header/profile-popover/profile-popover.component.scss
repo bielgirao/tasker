@@ -1,0 +1,31 @@
+@import '/src/styles';
+
+.popover-body {
+  display: none;
+  width: 120px;
+  padding: 20px;
+  border: 1px solid $border;
+  border-radius: 7px;
+  position: absolute;
+  background-color: $bg-color-2;
+  top: 45px;
+  right: 0;
+  z-index: 10;
+  transition: all ease 0.5s;
+
+  .popover-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 5px;
+
+    .popover-link {
+      color: $white;
+      font-size: 15px;
+    }
+  }
+}
+
+.active {
+  display: block;
+}

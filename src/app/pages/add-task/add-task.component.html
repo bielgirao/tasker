@@ -1,0 +1,73 @@
+<div class="container">
+  <div class="main">
+    <h3>Add a Task</h3>
+    <form [formGroup]="addTaskForm">
+
+      <mat-form-field appearance="outline">
+        <mat-label>Task Name</mat-label>
+        <input matInput
+               placeholder="What do you need to do?"
+               formControlName="name">
+        <mat-error *ngIf="addTaskForm.get('name')?.touched && addTaskForm.get('name')?.invalid && addTaskForm.get('name')?.getError('required')">
+          Task name is required.
+        </mat-error>
+        <mat-error *ngIf="addTaskForm.get('name')?.touched && addTaskForm.get('name')?.invalid && addTaskForm.get('name')?.getError('maxlength')">
+          Task name should have less than 25 characters.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Task Status</mat-label>
+        <mat-select
+          formControlName="status"
+          placeholder="Select the status of your task">
+          <mat-option value="to-do">To do</mat-option>
+          <mat-option value="doing">Doing</mat-option>
+          <mat-option value="done">Done</mat-option>
+        </mat-select>
+        <mat-error *ngIf="addTaskForm.get('status')?.touched && addTaskForm.get('status')?.invalid && addTaskForm.get('status')?.getError('required')">
+          Task status is required.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Description</mat-label>
+        <textarea
+          matInput
+          formControlName="description"
+          placeholder="Add a description about your task."
+        ></textarea>
+        <mat-error *ngIf="addTaskForm.get('description')?.touched && addTaskForm.get('description')?.invalid && addTaskForm.get('description')?.getError('maxlength')">
+          Task description should have less than 200 characters.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Choose the deadline</mat-label>
+        <input
+          matInput
+          readonly
+          [matDatepicker]="picker"
+          formControlName="deadline"
+          placeholder="Click on the calendar and select a date">
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="addTaskForm.get('deadline')?.touched && addTaskForm.get('deadline')?.invalid && addTaskForm.get('deadline')?.getError('required')">
+          Task deadline is required.
+        </mat-error>
+      </mat-form-field>
+
+      <button mat-fab
+              color="primary"
+              aria-label="Add task"
+              class="add-button"
+              (click)="submitForm()"
+              [disabled]="!addTaskForm.valid">
+        <mat-icon>add</mat-icon>
+      </button>
+    </form>
+  </div>
+</div>

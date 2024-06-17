@@ -1,0 +1,32 @@
+<div class="wrapper">
+  <div class="footer">
+      <img src="/assets/svg/tasker-logo.svg" alt="Tasker Logo" [routerLink]="['/']" class="pointer">
+      <div class="icons-menu">
+        <a
+          [routerLink]="'/'"
+          [routerLinkActive]="'active-button'"
+          [routerLinkActiveOptions]="{exact: true}"
+          class="icon-menu-button"
+        >
+          <mat-icon>home</mat-icon>
+        </a>
+        <a
+          [routerLink]="'/add-task'"
+          [routerLinkActive]="'active-button'"
+          aria-label="Add Task"
+          class="icon-menu-button"
+        >
+          <mat-icon>library_add</mat-icon>
+        </a>
+        <a
+          [routerLink]="'/profile'"
+          [routerLinkActive]="'active-button'"
+          aria-label="Profile"
+          class="icon-menu-button"
+        >
+          <mat-icon>account_circle</mat-icon>
+        </a>
+      </div>
+      <span>Development by <a href="https://lionart.com.br" target="_blank">Gabriel G.</a></span>
+  </div>
+</div>

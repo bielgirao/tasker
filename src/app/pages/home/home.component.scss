@@ -1,0 +1,89 @@
+@import '/src/styles';
+
+.task-card {
+  padding: 20px;
+  border-bottom: 1px solid $border;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  mat-icon {
+    height: 22px;
+    width: 22px;
+    font-size: 22px;
+    flex-basis: 22px;
+    color: $orange;
+    cursor: pointer;
+    font-weight: 500;
+  }
+
+  mat-icon.remove_btn {
+    color: $light-grey;
+  }
+
+  mat-icon.remove_btn:hover {
+    color: $white;
+  }
+
+  mat-icon.edit_btn {
+    color: $light-grey;
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+  }
+
+  mat-icon.edit_btn:hover {
+    color: $white;
+  }
+
+  div.content-wrapper {
+    flex-basis: calc(100% - 196px);
+    padding: 5px;
+
+    h4 {
+      font-size: 18px;
+      line-height: 20px;
+      color: $white;
+      margin: 0;
+    }
+
+    p {
+      text-align: start;
+      font-weight: 300;
+      font-size: 14px;
+      color: $white;
+      margin: 5px 0 0;
+
+      span {
+        font-weight: 600;
+      }
+    }
+  }
+
+
+  p.status {
+    padding: 5px;
+    border: 1.5px solid $border;
+    border-radius: 5px;
+    flex-basis: 130px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 13px;
+    text-transform: uppercase;
+    color: $white;
+    margin: 0;
+
+    .task-done {
+      color: $orange;
+    }
+  }
+}
+
+.task-card:hover {
+  background-color: $bg-color-2;
+}
+
+.last-task {
+  border-bottom: none;
+}
+

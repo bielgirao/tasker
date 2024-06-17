@@ -1,0 +1,23 @@
+<div class="wrapper">
+  <div class="header">
+    <img class="logo pointer" src="../../../assets/svg/tasker-logo.svg" alt="Tasker Logo" [routerLink]="['/']">
+    <div class="actions">
+      <a [routerLink]="['/']" class="nav-link">My Tasks</a>
+      <a
+        [routerLink]="'/add-task'"
+        aria-label="Add Task"
+        class="icon-menu-button"
+      >
+        <mat-icon>add</mat-icon>
+      </a>
+      <div class="profile">
+        <app-profile-popover
+          [popoverActive]="popoverActive"
+          (clickOutside)="popoverActive = false"
+        ></app-profile-popover>
+        <img src="../../../assets/svg/user-icon.svg" alt="Profile Image" (click)="togglePopover($event)">
+      </div>
+    </div>
+  </div>
+</div>
+

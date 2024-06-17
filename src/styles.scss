@@ -1,1 +1,215 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+$primary-palette: (
+  50 : #fee8e7,
+  100 : #fcc7c3,
+  200 : #faa19b,
+  300 : #f77b72,
+  400 : #f65f54,
+  500 : #f44336,
+  600 : #f33d30,
+  700 : #f13429,
+  800 : #ef2c22,
+  900 : #ec1e16,
+  A100 : #ffffff,
+  A200 : #ffe9e9,
+  A400 : #ffb8b6,
+  A700 : #ff9f9c,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #000000,
+    500 : #ffffff,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #000000,
+  )
+);
+
+$accent-palette: (
+  50 : #fef7e3,
+  100 : #fcebb8,
+  200 : #fade89,
+  300 : #f7d059,
+  400 : #f6c636,
+  500 : #f4bc12,
+  600 : #f3b610,
+  700 : #f1ad0d,
+  800 : #efa50a,
+  900 : #ec9705,
+  A100 : #ffffff,
+  A200 : #fff3e1,
+  A400 : #ffdeae,
+  A700 : #ffd394,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #000000,
+    500 : #000000,
+    600 : #000000,
+    700 : #000000,
+    800 : #000000,
+    900 : #000000,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #000000,
+  )
+);
+
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$app-primary: mat.define-palette($primary-palette);
+$app-accent: mat.define-palette($accent-palette);
+
+// The warn palette is optional (defaults to red).
+$app-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$app-theme: mat.define-dark-theme((
+  color: (
+    primary: $app-primary,
+    accent: $app-accent,
+    warn: $app-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($app-theme);
+
 /* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100%3B200%3B300%3B400%3B500%3B600%3B700%3B800%3B900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300%3B500%3B700&display=swap');
+
+/* Importing Bootstrap SCSS file. */
+@import 'bootstrap/scss/bootstrap';
+
+// Color Variables
+
+$orange: #f44336;
+$light-orange: #f95e4a;
+$lighter-grey: #F3F3F3;
+$white: #F7F7F7;
+$light-grey: #E0E1DD;
+$bg-color: #0f0f0f;
+$bg-color-2: #171717;
+$border: #2c2c2c;
+$disabled: #262626;
+
+// Typography
+
+$primary-font: 'Raleway', sans-serif;;
+$heading: 'Sora', sans-serif;
+
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: $bg-color;
+  font-family: $primary-font;
+  scroll-behavior: smooth;
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+
+  span, p, a {
+    font-weight: 500;
+    color: $white;
+    margin: 0;
+  }
+
+  h1, h2, h3 {
+    font-family: $heading;
+    color: $white;
+    margin: 0;
+  }
+}
+
+.container {
+  width: 90%;
+  max-width: 1140px;
+  margin: 40px auto 80px;
+  min-height: calc(100vh - 242px);
+}
+
+.main {
+  border: 1px solid $border;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+body::-webkit-scrollbar {
+  width: 15px;
+}
+
+body::-webkit-scrollbar-track {
+  background: $border;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: $bg-color;
+  border-radius: 10px;
+  border: 3.5px solid $border;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  label {
+    font-size: 15px;
+
+  }
+}
+
+a.icon-menu-button {
+  width: 50px;
+  height: 50px;
+  color: $white;
+  border: none;
+  box-shadow: none;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
