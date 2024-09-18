@@ -4,36 +4,42 @@ import { HomeComponent } from "./pages/home/home.component";
 import { AddTaskComponent } from "./pages/add-task/add-task.component";
 import {EditProfileComponent} from "./pages/edit-profile/edit-profile.component";
 import {EditTaskComponent} from "./pages/edit-task/edit-task.component";
-import {SignUpComponent} from "./pages/sign-up/sign-up.component";
+import {RegisterComponent} from "./pages/register/register.component";
 import {LoginComponent} from "./pages/login/login.component";
 import {ProfileComponent} from "./pages/profile/profile.component";
+import {AuthGuard} from "./guards/auth.guard";
 
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent
+    component: HomeComponent,
+    canActivate: [AuthGuard],
   },{
     path:'add-task',
-    component: AddTaskComponent
+    component: AddTaskComponent,
+    canActivate: [AuthGuard],
   }, {
     path:'edit-profile/:id',
-    component: EditProfileComponent
+    component: EditProfileComponent,
+    canActivate: [AuthGuard],
   },
   {
     path:'edit-task/:id',
-    component: EditTaskComponent
+    component: EditTaskComponent,
+    canActivate: [AuthGuard],
   },
   {
     path:'profile/:id',
-    component: ProfileComponent
+    component: ProfileComponent,
+    canActivate: [AuthGuard],
   },
   {
     path:'login',
     component: LoginComponent
   },
   {
-    path:'sign-up',
-    component: SignUpComponent
+    path:'register',
+    component: RegisterComponent
   }
 ];
 
