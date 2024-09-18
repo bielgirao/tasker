@@ -1,7 +1,7 @@
 <div class="popover-body" [ngClass]="{'active': popoverActive}">
   <ul class="popover-list">
-    <li class="popover-link" [routerLink]="['/profile/1']">View Profile</li>
-    <li class="popover-link" [routerLink]="['/edit-profile/1']">Edit Profile</li>
+    <li class="popover-link" (click)="navigateTo('/profile/1')">View Profile</li>
+    <li class="popover-link" (click)="navigateTo('/edit-profile/1')">Edit Profile</li>
     <li class="popover-link" (click)="logout()">Logout</li>
   </ul>
 </div>
