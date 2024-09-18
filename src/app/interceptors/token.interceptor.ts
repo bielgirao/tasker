@@ -18,6 +18,10 @@ export class TokenInterceptor implements HttpInterceptor {
     const accessToken = this.authService.getToken();
     let clonedRequest = req;
 
+    if (req.url.endsWith('/logout')) {
+      return next.handle(req);
+    }
+
     if (accessToken) {
       clonedRequest = req.clone({
         setHeaders: {
