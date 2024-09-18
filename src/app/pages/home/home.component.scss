@@ -87,3 +87,28 @@
   border-bottom: none;
 }
 
+.no-data-wrapper {
+  margin: 0 auto;
+  max-width: 500px;
+  padding: 50px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+
+  img {
+    opacity: 0.3;
+  }
+
+  h3 {
+    color: $white;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  p {
+    color: $lighter-grey;
+    font-size: 18px;
+    margin: 0;
+  }
+}

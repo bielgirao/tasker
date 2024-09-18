@@ -13,5 +13,26 @@
         <mat-icon class="remove_btn" (click)="deleteTask(task?.id)">remove_circle</mat-icon>
       </div>
     </div>
+
+      <div *ngIf="userHasNoData" class="no-data-wrapper">
+        <img
+            ngSrc="../../../assets/svg/no-data-icon-light-orange.svg"
+            width="150"
+            height="150"
+            alt="No Data Image"
+        >
+        <h3>No tasks yet...</h3>
+        <p>Add a task to start being more productive.</p>
+        <button
+          mat-flat-button
+          color="accent"
+          aria-label="Add Task"
+          class="primary-button"
+          size="medium"
+          [routerLink]="'/add-task'"
+        >
+          Add task
+        </button>
+      </div>
   </div>
 </div>

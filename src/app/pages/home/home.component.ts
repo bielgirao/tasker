@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TaskService } from "../../services/task-service.service";
-import { Task } from "../../services/task";
+import { Task } from "../../types/task";
 import { catchError, map } from 'rxjs/operators';
 import { of } from 'rxjs';
 import {MatSnackBar} from "@angular/material/snack-bar";
@@ -12,6 +12,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 })
 export class HomeComponent implements OnInit{
 
+  userHasNoData: boolean = false;
   tasks: Task[] = [];
 
   constructor(
@@ -31,6 +32,9 @@ export class HomeComponent implements OnInit{
       }),
       map(data => {
         this.tasks = data;
+        if(this.tasks && this.tasks.length <= 0) {
+          this.userHasNoData = true;
+        }
       })
     ).subscribe();
   }
