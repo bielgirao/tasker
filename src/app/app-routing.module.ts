@@ -14,11 +14,13 @@ const routes: Routes = [
     path: '',
     component: HomeComponent,
     canActivate: [AuthGuard],
-  },{
+  },
+  {
     path:'add-task',
     component: AddTaskComponent,
     canActivate: [AuthGuard],
-  }, {
+  },
+  {
     path:'edit-profile/:id',
     component: EditProfileComponent,
     canActivate: [AuthGuard],
