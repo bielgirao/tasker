@@ -3,6 +3,8 @@ import { Environment } from "../../environments/environment";
 import {HttpClient} from "@angular/common/http";
 import {BehaviorSubject, Observable, tap, throwError} from "rxjs";
 import {catchError} from "rxjs/operators";
+import {MatSnackBar} from "@angular/material/snack-bar";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +17,11 @@ export class AuthService {
 
   private authenticated = new BehaviorSubject<boolean>(false);
 
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient,
+    private snackBar: MatSnackBar,
+    private router: Router
+  ) {
     this.loadToken();
   }
 
@@ -59,21 +65,21 @@ export class AuthService {
   }
 
   logout(): void {
-    this.http.post(`${this.apiUrl}/logout`, {}).subscribe({
-      next: () => {
-        this.accessToken = null;
-        localStorage.removeItem('tasker@1.0.0-access_token');
-        this.authenticated.next(false);
-        this.stopTokenTimer();
-      },
-      error: (error) => {
-        console.error('Logout error:', error);
-        this.accessToken = null;
-        localStorage.removeItem('tasker@1.0.0-access_token');
-        this.authenticated.next(false);
-        this.stopTokenTimer();
-      },
-    });
+    this.stopTokenTimer();
+    this.authenticated.next(false);
+    this.accessToken = null;
+    localStorage.removeItem('tasker@1.0.0-access_token');
+    if (this.getToken()) {
+      this.http.post(`${this.apiUrl}/logout`, {}).subscribe({
+        next: () => {
+          this.snackBar.open('Logged out successfully.', undefined, {duration: 3000});
+        },
+        error: (error) => {
+          console.error('Logout error:', error);
+        },
+      });
+    }
+    this.router.navigate(['/login']);
   }
 
   getToken(): string | null {
