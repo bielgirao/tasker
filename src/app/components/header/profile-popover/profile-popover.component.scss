@@ -2,7 +2,7 @@
 
 .popover-body {
   display: none;
-  width: 120px;
+  width: 150px;
   padding: 20px;
   border: 1px solid $border;
   border-radius: 7px;
@@ -12,16 +12,20 @@
   right: 0;
   z-index: 10;
   transition: all ease 0.5s;
+  cursor: default;
 
   .popover-list {
+    display: flex;
+    flex-direction: column;
     list-style: none;
     padding: 0;
     margin: 0;
-    gap: 5px;
+    gap: 10px;
 
-    .popover-link {
+    li.popover-link {
       color: $white;
-      font-size: 15px;
+      font-size: 16px;
+      cursor: pointer;
     }
   }
 }

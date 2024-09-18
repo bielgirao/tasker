@@ -1,4 +1,7 @@
 import {Component, ElementRef, EventEmitter, HostListener, Input, Output} from '@angular/core';
+import {AuthService} from "../../../services/auth.service";
+import {MatSnackBar} from "@angular/material/snack-bar";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-profile-popover',
@@ -16,5 +19,17 @@ export class ProfilePopoverComponent {
     }
   }
 
-  constructor(private _eref: ElementRef) {}
+  constructor(
+    private _eref: ElementRef,
+    private authService: AuthService,
+    private snackBar: MatSnackBar,
+    private router: Router
+  ) {}
+
+  async logout() {
+    this.authService.logout();
+    this.snackBar.open('Logged out successfully.', undefined, {duration: 3000});
+    await this.router.navigate(['/login']);
+  }
+
 }

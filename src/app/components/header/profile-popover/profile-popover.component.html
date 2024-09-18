@@ -2,6 +2,7 @@
   <ul class="popover-list">
     <li class="popover-link" [routerLink]="['/profile/1']">View Profile</li>
     <li class="popover-link" [routerLink]="['/edit-profile/1']">Edit Profile</li>
-    <li class="popover-link">Logout</li>
+    <li class="popover-link" (click)="logout()">Logout</li>
   </ul>
 </div>
+
