@@ -1,1 +1,48 @@
-<p>login works!</p>
+<div class="container">
+    <div class="main">
+        <h3>Login</h3>
+        <form [formGroup]="loginForm">
+            <mat-form-field appearance="outline">
+                <mat-label>Email</mat-label>
+                <input
+                    matInput
+                    formControlName="email"
+                    placeholder="example@mail.com"
+                    type="email"
+                >
+                <mat-error *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.invalid && loginForm.get('email')?.getError('required')">
+                    Email is required.
+                </mat-error>
+                <mat-error *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.invalid && loginForm.get('email')?.getError('email')">
+                    Please enter a valid email address.
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Password</mat-label>
+                <input matInput
+                       formControlName="password"
+                       type="password"
+                >
+                <mat-error *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid && loginForm.get('password')?.getError('required')">
+                    Password is required.
+                </mat-error>
+                <mat-error *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid && loginForm.get('password')?.getError('minlength')">
+                    Password should have at least 6 characters.
+                </mat-error>
+            </mat-form-field>
+
+            <button
+                mat-flat-button
+                color="accent"
+                aria-label="Log in"
+                class="login-button"
+                size="medium"
+                (click)="onSubmit()"
+                [disabled]="!loginForm.valid"
+            >
+                Log in now
+            </button>
+        </form>
+    </div>
+</div>
