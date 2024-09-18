@@ -9,7 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { HomeComponent } from './pages/home/home.component';
 import { AddTaskComponent } from './pages/add-task/add-task.component';
-import { HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -25,8 +25,9 @@ import { EditProfileComponent } from './pages/edit-profile/edit-profile.componen
 import {EditTaskComponent} from "./pages/edit-task/edit-task.component";
 import { ProfileComponent } from './pages/profile/profile.component';
 import { LoginComponent } from './pages/login/login.component';
-import { SignUpComponent } from './pages/sign-up/sign-up.component';
+import { RegisterComponent } from './pages/register/register.component';
 import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {TokenInterceptor} from "./interceptors/token.interceptor";
 
 
 @NgModule({
@@ -41,7 +42,7 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
     EditProfileComponent,
     ProfileComponent,
     LoginComponent,
-    SignUpComponent
+    RegisterComponent
   ],
     imports: [
         BrowserModule,
@@ -62,7 +63,13 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
         NgOptimizedImage,
         MatSnackBarModule
     ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
