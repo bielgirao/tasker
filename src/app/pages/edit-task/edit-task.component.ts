@@ -3,7 +3,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {TaskService} from "../../services/task-service.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {Task} from "../../services/task";
+import {Task} from "../../types/task";
 import {catchError, first, map} from "rxjs/operators";
 import {lastValueFrom, of} from "rxjs";
 

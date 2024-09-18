@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {Task} from '../../services/task';
+import {Task} from '../../types/task';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {TaskService} from "../../services/task-service.service";
 import {first} from "rxjs/operators";
