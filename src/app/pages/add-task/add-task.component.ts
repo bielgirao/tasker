@@ -4,6 +4,7 @@ import {Task} from '../../services/task';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {TaskService} from "../../services/task-service.service";
 import {first} from "rxjs/operators";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-add-task',
@@ -18,6 +19,7 @@ export class AddTaskComponent implements OnInit {
     private form: FormBuilder,
     private taskService: TaskService,
     private snackBar: MatSnackBar,
+    private router: Router
   ) {
     this.addTaskForm = this.form.group({
       name: ['', [Validators.required, Validators.maxLength(25)]],
@@ -47,9 +49,14 @@ export class AddTaskComponent implements OnInit {
       next: () => {
         snackMsg.dismiss();
         this.resetForm();
-        this.snackBar.open('Task added Successfully!', '', {
-          duration: 3000
-        });
+        this.snackBar.open(
+          'Task added Successfully!',
+          undefined,
+          {
+            duration: 3000
+          }
+        );
+        this.router.navigate(['/'])
       },
       error: () => {
         snackMsg.dismiss();
