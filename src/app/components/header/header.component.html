@@ -2,18 +2,39 @@
   <div class="header">
     <img class="logo pointer" src="../../../assets/svg/tasker-logo.svg" alt="Tasker Logo" [routerLink]="['/']">
     <div class="actions">
-      <a [routerLink]="['/']" class="nav-link">My Tasks</a>
       <a
+          *ngIf="isLoggedIn"
+          [routerLink]="['/']"
+          class="nav-link"
+      >
+          My Tasks
+      </a>
+      <a
+        *ngIf="!isLoggedIn"
+        [routerLink]="['/login']"
+        class="nav-link"
+      >
+        Login
+      </a>
+      <a
+        *ngIf="!isLoggedIn"
+        [routerLink]="['/register']"
+        class="nav-link"
+      >
+        Register
+      </a>
+      <a
+        *ngIf="isLoggedIn"
         [routerLink]="'/add-task'"
         aria-label="Add Task"
         class="icon-menu-button"
       >
         <mat-icon>add</mat-icon>
       </a>
-      <div class="profile">
+      <div class="profile" *ngIf="isLoggedIn">
         <app-profile-popover
           [popoverActive]="popoverActive"
-          (clickOutside)="popoverActive = false"
+          (closePopoverEmittter)="popoverActive = false"
         ></app-profile-popover>
         <img src="../../../assets/svg/user-icon.svg" alt="Profile Image" (click)="togglePopover($event)">
       </div>

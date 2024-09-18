@@ -1,7 +1,7 @@
 <div class="wrapper">
   <div class="footer">
       <img src="/assets/svg/tasker-logo.svg" alt="Tasker Logo" [routerLink]="['/']" class="pointer">
-      <div class="icons-menu">
+      <div class="icons-menu" *ngIf="isLoggedIn">
         <a
           [routerLink]="'/'"
           [routerLinkActive]="'active-button'"

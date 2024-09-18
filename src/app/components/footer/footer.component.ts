@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router, NavigationEnd} from '@angular/router';
+import {AuthService} from "../../services/auth.service";
 
 @Component({
   selector: 'app-footer',
@@ -9,12 +10,19 @@ import {Router, NavigationEnd} from '@angular/router';
 export class FooterComponent implements OnInit {
   public url!:string;
   public hideAddButton:boolean = false;
+  public isLoggedIn:boolean = false;
 
-
-  constructor(private router: Router) {
+  constructor(
+    private router: Router,
+    private authService: AuthService
+  ) {
   }
 
-  ngOnInit(){
+  async ngOnInit(){
+    this.authService.isAuthenticated.subscribe((isLoggedIn: boolean) => {
+      this.isLoggedIn = isLoggedIn
+    })
+
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         const url = event.url;
