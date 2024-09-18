@@ -1,0 +1,39 @@
+@import '/src/styles';
+
+.main {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+
+  form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  h3{
+    text-align: center;
+    font-size: 26px;
+    color: $orange;
+    margin-bottom: 0;
+  }
+
+  a.login-link {
+    text-align: center;
+    color: $lighter-grey;
+    font-size: 16px;
+  }
+
+  a.login-link:hover {
+    color: $light-grey;
+  }
+
+  mat-error {
+    font-size: 12px;
+    position: relative;
+  }
+}
