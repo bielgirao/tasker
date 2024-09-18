@@ -36,7 +36,7 @@
                 mat-flat-button
                 color="accent"
                 aria-label="Log in"
-                class="login-button"
+                class="primary-button"
                 size="medium"
                 (click)="onSubmit()"
                 [disabled]="!loginForm.valid"
@@ -44,5 +44,11 @@
                 Log in Now
             </button>
         </form>
+        <a
+            [routerLink]="['/register']"
+            class="register-link"
+        >
+            Not registered? Create an account now.
+        </a>
     </div>
 </div>

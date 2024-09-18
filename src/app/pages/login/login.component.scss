@@ -1,10 +1,16 @@
 @import '/src/styles';
 
 .main {
-    padding: 20px;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
 
     form {
-        padding-top: 20px;
+        width: 100%;
         display: flex;
         flex-direction: column;
     }
@@ -13,16 +19,23 @@
         text-align: center;
         font-size: 26px;
         color: $orange;
+        margin-bottom: 0;
     }
+
+    a.register-link {
+        text-align: center;
+        color: $lighter-grey;
+        font-size: 16px;
+    }
+
+    a.register-link:hover {
+        color: $light-grey;
+    }
+
 
     mat-error {
         font-size: 12px;
         position: relative;
-    }
-
-    mat-form-field.mdc-text-field--focused {
-        border-color: yellow;
-        background-color: blue;
     }
 
     .login-button {

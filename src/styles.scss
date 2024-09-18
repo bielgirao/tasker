@@ -115,9 +115,10 @@ $light-orange: #f95e4a;
 $lighter-grey: #F3F3F3;
 $white: #F7F7F7;
 $light-grey: #E0E1DD;
-$bg-color: #0f0f0f;
-$bg-color-2: #171717;
-$border: #2c2c2c;
+$lighter-grey: #a9a9a9;
+$bg-color: #1a1a1a;
+$bg-color-2: #1d1d1d;
+$border: #222222;
 $disabled: #262626;
 
 // Typography
@@ -212,4 +213,57 @@ a.icon-menu-button {
   align-items: center;
   justify-content: center;
   font-size: 18px;
+}
+
+mat-error {
+    margin-bottom: 10px!important;
+}
+
+/* Change the border focused color */
+.mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused
+.mdc-notched-outline__leading,
+.mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused
+.mdc-notched-outline__notch,
+.mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused
+.mdc-notched-outline__trailing {
+    border-color: $light-grey;
+
+    input {
+        color: $light-grey;
+    }
+
+    mat-label {
+        color: $light-grey !important;
+        caret-color: $light-grey;
+    }
+}
+
+.mat-mdc-snack-bar-container {
+  &.success {
+    --mdc-snackbar-container-color: rgba(114, 176, 113, 0.65);
+    --mdc-snackbar-supporting-text-color: #fff;
+  }
+
+  &.error {
+    --mdc-snackbar-container-color: #7b2020;
+    --mdc-snackbar-supporting-text-color: #fff;
+  }
+
+}
+
+button.primary-button {
+  width: 150px;
+  height: 45px;
+  padding: 15px 20px !important;
+  border-radius: 4px;
+  align-self: center;
+  justify-self: center;
+  background-color: $orange;
+  z-index: 10;
+  cursor: pointer;
+
+  &:disabled {
+    background-color: $disabled;
+    cursor: not-allowed;
+  }
 }

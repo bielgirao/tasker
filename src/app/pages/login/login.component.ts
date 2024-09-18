@@ -34,6 +34,7 @@ export class LoginComponent implements OnInit {
           undefined,
           {
             duration: 3000,
+            panelClass: ['error']
           }
         );
       }
@@ -43,10 +44,7 @@ export class LoginComponent implements OnInit {
   async onSubmit() {
     if(this.loginForm.valid) {
       const snackMsg = this.snackBar.open('Logging in...');
-
-      console.log('Login information: ', this.loginForm.value);
       this.credentials = this.loginForm.value;
-
       this.authService.login(this.credentials).subscribe({
         next: async () => {
           snackMsg.dismiss();
@@ -55,6 +53,7 @@ export class LoginComponent implements OnInit {
             undefined,
             {
               duration: 3000,
+              panelClass: ['success']
             }
           );
           await this.router.navigate(['/']);
@@ -72,6 +71,7 @@ export class LoginComponent implements OnInit {
             undefined,
             {
               duration: 3000,
+              panelClass: ['error']
             }
           );
         }
